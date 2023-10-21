@@ -6,12 +6,17 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [isSignForm, setIsSignForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
+  const handletoogleform = () => {
+    setIsSignForm(!isSignForm);
+  };
   const handleButtonClick = () => {
     //validate the form data
     const message = validate(email.current.value, password.current.value);
@@ -30,6 +35,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -46,8 +52,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          // ...
           console.log(user);
+          navigate("/");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -55,10 +61,7 @@ const Login = () => {
         });
     }
   };
-  // console.log(email);
-  const handletoogleform = () => {
-    setIsSignForm(!isSignForm);
-  };
+
   return (
     <div>
       <Header />
@@ -98,7 +101,7 @@ const Login = () => {
         <p className="text-red-500">{errorMessage}</p>
         <button
           className="p-4 my-6 bg-red-700 w-full rounded-lg"
-          // onClick={handletoogleform}
+          onClick={handletoogleform}
         >
           {isSignForm ? "Sign In" : "Sign Up"}
         </button>
