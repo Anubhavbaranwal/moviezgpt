@@ -12,13 +12,16 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [isSignForm, setIsSignForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isSignForm, setIsSignForm] = useState(false);
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+
   const handletoogleform = () => {
     setIsSignForm(!isSignForm);
   };
@@ -97,7 +100,6 @@ const Login = () => {
       <form
         onSubmit={(e) => e.preventDefault()}
         className="w-3/12 absolute bg-black p-12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
-        onClick={handleButtonClick}
       >
         <h1 className="font-bold text-3xl my-4">
           {isSignForm ? "Sign In" : "Sign Up"}
@@ -125,7 +127,7 @@ const Login = () => {
         <p className="text-red-500">{errorMessage}</p>
         <button
           className="p-4 my-6 bg-red-700 w-full rounded-lg"
-          onClick={handletoogleform}
+          onClick={handleButtonClick}
         >
           {isSignForm ? "Sign In" : "Sign Up"}
         </button>
