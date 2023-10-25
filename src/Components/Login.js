@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { userlogo } from "../utils/Constant";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -43,7 +44,7 @@ const Login = () => {
           console.log(name.current.value);
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/125970503?v=4",
+            photoURL: userlogo ,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
