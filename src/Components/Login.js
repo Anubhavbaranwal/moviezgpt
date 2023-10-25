@@ -16,8 +16,6 @@ const Login = () => {
   const [isSignForm, setIsSignForm] = useState(false);
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -57,7 +55,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error);
@@ -77,9 +74,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-
-          navigate("/");
         })
         .catch((error) => {
           const errorCode = error.code;
