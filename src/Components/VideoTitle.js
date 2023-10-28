@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const VideoTitle = () => {
+const VideoTitle = ({ title, overview }) => {
   return (
-    <div>VideoTitle</div>
-  )
-}
+    <div>
+      <h1>{title}</h1>
+      <p>{overview}</p>
+    </div>
+  );
+};
 
-export default VideoTitle
+export default VideoTitle;
