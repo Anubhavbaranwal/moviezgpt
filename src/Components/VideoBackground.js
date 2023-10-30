@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { API_options } from "../utils/Constant";
+import {useDispatch} from "react-redux";
 
 const VideoBackground = ({ Id }) => {
+  const dispatch=useDispatch();
   const [trailerId, setTrailerId] = useState(null);
   const getvideo = async () => {
     const data = await fetch(
@@ -14,6 +16,7 @@ const VideoBackground = ({ Id }) => {
     const trailer = filterdata.length ? filterdata[0] : json.results[0];
     console.log(trailer);
     setTrailerId(trailer?.key);
+    dispatch(addTrailerVideo(trailer?.key));
   };
   useEffect(() => {
     getvideo();
