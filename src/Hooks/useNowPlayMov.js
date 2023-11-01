@@ -10,7 +10,7 @@ const useNowPlayMov = () => {
   const getdata = async () => {
     const data = await fetch(url, API_options);
     const json = await data.json();
-    console.log(json?.results);
+
     dispatch(addNowPlayingMOvies(json.results));
   };
   useEffect(() => {
