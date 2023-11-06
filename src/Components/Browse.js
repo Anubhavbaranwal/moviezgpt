@@ -7,7 +7,7 @@ import SubContainer from "./SubContainer";
 const Browse = () => {
   useNowPlayMov();
   return (
-    <div>
+    <div className="">
       <Header />
       <MainContainer />
       <SubContainer />
