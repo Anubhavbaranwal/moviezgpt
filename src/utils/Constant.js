@@ -8,7 +8,6 @@ export const API_options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    
-
+  
   },
 };
