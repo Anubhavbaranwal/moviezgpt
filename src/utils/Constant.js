@@ -8,6 +8,7 @@ export const API_options = {
   method: "GET",
   headers: {
     accept: "application/json",
-   
+    Authorization:
+    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzkzMWQxOGQ4MGI4MzZmNDhmNGU3YTE2OWQ2YmRhMyIsInN1YiI6IjY1Mzg5MjdlOTQ2MzE4MDEwMDE0N2RjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4UjI5FfBL3wz6gArFbeGstwlJst2kF3SaXi1WK2MRAs",
   },
 };
