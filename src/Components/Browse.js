@@ -6,8 +6,11 @@ import SubContainer from "./SubContainer";
 import usePopularMovie from "../Hooks/usePopularMovie";
 import useTopRated from "../Hooks/useTopRated";
 import useUpcoming from "../Hooks/useUpcoming";
+import { useSelector } from "react-redux";
+import GptSearch from "./GptSearch";
 
 const Browse = () => {
+  const showGpt = useSelector((store) => store.gpt.showGptSearch);
   useNowPlayMov();
   usePopularMovie();
   useTopRated();
@@ -15,8 +18,14 @@ const Browse = () => {
   return (
     <div className="">
       <Header />
-      <MainContainer />
-      <SubContainer />
+      {showGpt ? (
+        <GptSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SubContainer />
+        </>
+      )}
     </div>
   );
 };
