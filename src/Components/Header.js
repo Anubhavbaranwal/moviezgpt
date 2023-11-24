@@ -11,6 +11,7 @@ import { logo } from "../utils/Constant";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const user = useSelector((state) => state.user);
 
   const signOutHandle = () => {
@@ -35,12 +36,18 @@ const Header = () => {
     });
     return () => unsubscribe();
   }, []);
+  const handlegptsearch =()=>{
+
+  }
 
   return (
     <div className="absolute  py-2 bg-gradient-to-b from-black z-30 w-screen flex justify-between">
       <img className="w-44" src={logo} alt="Logo" />
       {user && (
         <div className="flex h-1/2">
+          <button className="mx-4 my-2 bg-purple-800 text-white rounded-lg py-4 px-2" onClick={handlegptsearch}>
+            GPT search
+          </button>
           <img alt="userLogo" src={user.photoURL} className="w-12" />
           <button className="text-white" onClick={signOutHandle}>
             Sign Out

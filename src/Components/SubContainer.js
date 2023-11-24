@@ -6,9 +6,16 @@ const SubContainer = () => {
   const movies = useSelector((store) => store.movies);
   console.log(movies);
   return (
-    <div>
-      <MovieList title={"Now Playing"} movies={movies?.nowPlayingMovie} />
-    </div>
+    movies && (
+      <div className="bg-black">
+        <div className="-mt-64 relative z-20">
+          <MovieList title={"Now Playing"} movies={movies?.nowPlayingMovie} />
+          <MovieList title={"Top Rated"} movies={movies?.TopRated} />
+          <MovieList title={"Popular"} movies={movies?.Popular} />
+          <MovieList title={"Upcoming Movie"} movies={movies?.Upcoming} />
+        </div>
+      </div>
+    )
   );
 };
 
