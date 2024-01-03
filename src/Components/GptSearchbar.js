@@ -1,14 +1,15 @@
-import openai from "../utils/openai";
-import { useRef } from "react";
+import openai from "../utils/ai";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import lang from "../utils/languageConstants";
-import { API_options } from "../utils/constants";
+import lang from "../utils/langConstant";
+import { API_options } from "../utils/Constant";
 import { addGptMovieResult } from "../utils/gptSlice";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
   const langKey = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
+  const [errormsg, setErrorMsg] = useState("");
 
   // search movie in TMDB
   const searchMovieTMDB = async (movie) => {
@@ -16,7 +17,7 @@ const GptSearchBar = () => {
       "https://api.themoviedb.org/3/search/movie?query=" +
         movie +
         "&include_adult=false&language=en-US&page=1",
-        API_options
+      API_options
     );
     const json = await data.json();
 
@@ -26,6 +27,7 @@ const GptSearchBar = () => {
   const handleGptSearchClick = async () => {
     console.log(searchText.current.value);
     // Make an API call to GPT API and get Movie Results
+    if (errormsg.length > 0) setErrorMsg("");
 
     const gptQuery =
       "Act as a Movie Recommendation system and suggest some movies for the query : " +
@@ -39,19 +41,14 @@ const GptSearchBar = () => {
 
     if (!gptResults.choices) {
       // TODO: Write Error Handling
+      setErrorMsg("Please add more Info");
     }
 
     console.log(gptResults.choices?.[0]?.message?.content);
 
-    // Andaz Apna Apna, Hera Pheri, Chupke Chupke, Jaane Bhi Do Yaaro, Padosan
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
 
-    // ["Andaz Apna Apna", "Hera Pheri", "Chupke Chupke", "Jaane Bhi Do Yaaro", "Padosan"]
-
-    // For each movie I will search TMDB API
-
     const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
-    // [Promise, Promise, Promise, Promise, Promise]
 
     const tmdbResults = await Promise.all(promiseArray);
 
@@ -80,6 +77,7 @@ const GptSearchBar = () => {
         >
           {lang[langKey].search}
         </button>
+        <div>{errormsg}</div>
       </form>
     </div>
   );

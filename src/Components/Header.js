@@ -16,7 +16,7 @@ const Header = () => {
   const navigate = useNavigate();
   const showGpt = useSelector((store) => store.gpt.showGptSearch);
   const user = useSelector((state) => state.user);
-
+  console.log(user);
   const signOutHandle = () => {
     signOut(auth)
       .then(() => {
@@ -67,7 +67,7 @@ const Header = () => {
             className="mx-4 my-4 px-4 bg-purple-800 text-white rounded-lg "
             onClick={handlegptsearch}
           >
-            GPT search
+            {showGpt ? "Home Page" : "GPT search"}
           </button>
           <img alt="userLogo" src={user.photoURL} className="w-12" />
           <button className="text-white" onClick={signOutHandle}>

@@ -8,8 +8,7 @@ export const API_options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzkzMWQxOGQ4MGI4MzZmNDhmNGU3YTE2OWQ2YmRhMyIsInN1YiI6IjY1Mzg5MjdlOTQ2MzE4MDEwMDE0N2RjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4UjI5FfBL3wz6gArFbeGstwlJst2kF3SaXi1WK2MRAs",
+    Authorization: "Bearer" + process.env.REACT_APP_TMDB,
   },
 };
 export const Image_url = "https://image.tmdb.org/t/p/w780";
@@ -19,4 +18,7 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
-export const BG_URL="https://assets.nflxext.com/ffe/siteui/vlv3/893a42ad-6a39-43c2-bbc1-a951ec64ed6d/1d86e0ac-428c-4dfa-9810-5251dbf446f8/IN-en-20231002-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+export const BG_URL =
+  "https://assets.nflxext.com/ffe/siteui/vlv3/893a42ad-6a39-43c2-bbc1-a951ec64ed6d/1d86e0ac-428c-4dfa-9810-5251dbf446f8/IN-en-20231002-popsignuptwoweeks-perspective_alpha_website_large.jpg";
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI;

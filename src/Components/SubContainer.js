@@ -8,7 +8,7 @@ const SubContainer = () => {
   return (
     movies && (
       <div className="bg-black">
-        <div className="-mt-44 relative z-20">
+        <div className="-mt-72 relative z-30">
           <MovieList title={"Now Playing"} movies={movies?.nowPlayingMovie} />
           <MovieList title={"Top Rated"} movies={movies?.TopRated} />
           <MovieList title={"Popular"} movies={movies?.Popular} />

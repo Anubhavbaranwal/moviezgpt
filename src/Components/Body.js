@@ -4,7 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import Browse from "./Browse";
 import { useDispatch } from "react-redux";
-
+import Videoplay from "./Videoplay";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -17,10 +17,14 @@ const Body = () => {
       path: "/browse",
       element: <Browse />,
     },
+    {
+      path: "/play",
+      element: <Videoplay />,
+    },
   ]);
- 
+
   return (
-    <div>
+    <div className="w-full ">
       <RouterProvider router={appRouter} />
     </div>
   );

@@ -2,34 +2,15 @@ import React, { useEffect, useState } from "react";
 import { API_options } from "../utils/Constant";
 import { useDispatch, useSelector } from "react-redux";
 import useMovieTrailer from "../Hooks/useMovieTrailer";
+import PlayVideo from "./PlayVideo";
 
 const VideoBackground = ({ movieId }) => {
   useMovieTrailer(movieId);
   const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
 
   return (
-    <div className=" w-screen">
-      {/* <iframe
-        className="w-screen aspect-[2.05/1]"
-        src={
-          "https://www.youtube.com/embed/" +
-          trailerVideo?.key +
-          "?&autoplay=1&mute=1"
-        }
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      ></iframe> */}
-      <iframe
-        className="w-screen aspect-[2.05/1]"
-        src={
-          "https://www.youtube.com/embed/" +
-          trailerVideo?.key +
-          "?&autoplay=1&mute=1"
-        }
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
+    <div className=" w-screen overflow-hidden">
+      <PlayVideo id={trailerVideo?.key} />
     </div>
   );
 };

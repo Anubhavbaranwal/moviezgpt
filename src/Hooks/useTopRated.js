@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const useTopRated = () => {
   const dispatch = useDispatch();
   const url = "https://api.themoviedb.org/3/movie/top_rated?page=1";
+  const TR = useSelector((store) => store.movies?.TopRated);
 
   const getdata = async () => {
     const data = await fetch(url, API_options);
@@ -14,7 +15,7 @@ const useTopRated = () => {
     dispatch(addTopRated(json.results));
   };
   useEffect(() => {
-    getdata();
+    !TR && getdata();
   }, []);
 };
 
