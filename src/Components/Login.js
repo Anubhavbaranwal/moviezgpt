@@ -77,6 +77,14 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user.photoURL);
+          dispatch(
+            addUser({
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+              photoURL: userlogo,
+            })
+          );
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -93,11 +101,12 @@ const Login = () => {
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/893a42ad-6a39-43c2-bbc1-a951ec64ed6d/1d86e0ac-428c-4dfa-9810-5251dbf446f8/IN-en-20231002-popsignuptwoweeks-perspective_alpha_website_large.jpg"
           alt="bg"
+          className="h-screen w-screen object-cover"
         />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-3/12 absolute bg-black p-12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+        className=" w-4/5 md:w-3/12 absolute bg-black p-12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
         <h1 className="font-bold text-3xl my-4">
           {isSignForm ? "Sign In" : "Sign Up"}

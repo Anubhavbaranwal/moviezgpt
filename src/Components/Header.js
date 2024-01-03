@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import {} from "@reduxjs/toolkit";
 import { addUser, removeUser } from "../utils/userSlice";
-import { logo } from "../utils/Constant";
+import { logo, userlogo } from "../utils/Constant";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/Constant";
 import { changeLanguage } from "../utils/configSlice";
@@ -47,10 +47,10 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute  py-2 bg-gradient-to-b from-black z-30 w-screen flex justify-between flex-col md:flex-row">
-      <img className="w-44" src={logo} alt="Logo" />
+    <div className="absolute  py-2 bg-gradient-to-b from-black z-30 w-full flex justify-between flex-col md:flex-row">
+      <img className="w-44 h-16 mx-auto md:mx-0" src={logo} alt="Logo" />
       {user && (
-        <div className="flex h-1/2">
+        <div className="flex p-3">
           {showGpt && (
             <select
               className="py-1 px-4 m-4 bg-gray-900 text-white rounded-lg"
@@ -69,7 +69,11 @@ const Header = () => {
           >
             {showGpt ? "Home Page" : "GPT search"}
           </button>
-          <img alt="userLogo" src={user.photoURL} className="w-12" />
+          <img
+            alt="userLogo"
+            src={userlogo}
+            className="w-12 h-12 hidden md:block"
+          />
           <button className="text-white" onClick={signOutHandle}>
             Sign Out
           </button>

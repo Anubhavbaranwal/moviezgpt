@@ -9,7 +9,7 @@ const VideoBackground = ({ movieId }) => {
   const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
 
   return (
-    <div className=" w-screen">
+    <div className="w-full">
       <PlayVideo id={trailerVideo?.key} />
     </div>
   );
